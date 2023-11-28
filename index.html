@@ -14,6 +14,30 @@
 
         </div>
 
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyDf2qsr8DWxZ1303A6nokPx8pGxZQAilCc",
+              authDomain: "cloud-cafe-a6279.firebaseapp.com",
+              projectId: "cloud-cafe-a6279",
+              storageBucket: "cloud-cafe-a6279.appspot.com",
+              messagingSenderId: "365172338485",
+              appId: "1:365172338485:web:420c3ee0cd8f90fd9a667c",
+              measurementId: "G-DSZ5CLTQJ0"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+          </script>
+
         <script src="app.js"></script>
     </body>
 </html>
