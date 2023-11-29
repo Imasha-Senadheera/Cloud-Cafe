@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+const form = document.querySelector('#add-cafe-form');
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -20,6 +22,7 @@ const db = getFirestore(app);
 // Function to load cafes
 async function loadCafes() {
     const cafeList = document.querySelector('#cafe-list');
+    cafeList.innerHTML = ''; // Clear previous content
 
     // create element & render cafe
     function renderCafe(doc) {
@@ -48,4 +51,16 @@ async function loadCafes() {
 document.addEventListener('DOMContentLoaded', function () {
     // Ensure Firebase is initialized before calling loadCafes
     loadCafes();
+});
+
+//saving data
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await addDoc(collection(db, 'cafes'), {
+        name: form.name.value,
+        city: form.city.value
+    });
+    form.name.value = '';
+    form.city.value = '';
+    loadCafes(); // Reload cafes after adding a new one
 });
